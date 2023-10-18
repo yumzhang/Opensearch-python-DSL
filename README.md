@@ -1,1 +1,1 @@
-# This project is for ELK-python-DSL learning
+# This project is for Opensearch-python learning
