@@ -1,1 +1,1 @@
-# This project is for Opensearch-python learning
+# This project is for Opensearch and python
