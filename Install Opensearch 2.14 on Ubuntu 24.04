@@ -1,0 +1,111 @@
+Install Opensearch 2.14 on Ubuntu 24.04
+
+1. Install and upgrade the Ubuntu 24.04 OS.
+    # apt-get update
+    # apt-get upgrade
+2. Download Opensearch 2.14
+    # wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.14.0/opensearch-2.14.0-linux-x64.deb
+    # wget https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/2.14.0/opensearch-dashboards-2.14.0-linux-x64.deb
+    # wget https://artifacts.opensearch.org/data-prepper/2.8.0/opensearch-data-prepper-jdk-2.8.0-linux-x64.tar.gz
+    # wget https://artifacts.opensearch.org/logstash/logstash-oss-with-opensearch-output-plugin-8.9.0-linux-x64.tar.gz
+    # wget https://artifacts.opensearch.org/opensearch-clients/opensearch-cli/opensearch-cli-1.2.0-linux-x64.zip
+3. Install Opensearch 2.14
+    # sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD=YourPassword dpkg -i opensearch-2.14.0-linux-x64.deb
+
+    (Reading database ... 84768 files and directories currently installed.)
+    Preparing to unpack opensearch-2.14.0-linux-x64.deb ...
+    Running OpenSearch Pre-Removal Script
+    Running OpenSearch Pre-Installation Script
+    Unpacking opensearch (2.14.0) over (2.14.0) ...
+    Setting up opensearch (2.14.0) ...
+    Running OpenSearch Post-Installation Script
+    ### NOT starting on installation, please execute the following statements to configure opensearch service to start automatically using systemd
+       sudo systemctl daemon-reload
+       sudo systemctl enable opensearch.service    
+    ### You can start opensearch service by executing
+       sudo systemctl start opensearch.service
+    ### Create opensearch demo certificates in /etc/opensearch/
+       See demo certs creation log in /var/log/opensearch/install_demo_configuration.log
+    ### Breaking change in packaging since 2.13.0
+       In 2.13.0 and later releases of OpenSearch, we have changed the permissions associated with access to installed files
+       If you are configuring tools that require read access to the OpenSearch configuration files, we recommend you add the user that runs these tools to the 'opensearch' group
+       For more information, see https://github.com/opensearch-project/opensearch-build/pull/4043
+    Processing triggers for libc-bin (2.39-0ubuntu8.1) ...
+
+    Note: Password must has a minimum 8 character password and must contain at least one uppercase letter, one lowercase letter, one digit, and one special character that is strong.
+
+4. Configure opensearch service to start automatically using systemd
+    # systemctl daemon-reload
+    # systemctl enable opensearch.service
+    # systemctl start opensearch.service
+    # systemctl status opensearch.service
+
+      ● opensearch.service - OpenSearch
+           Loaded: loaded (/usr/lib/systemd/system/opensearch.service; enabled; preset: enabled)
+           Active: active (running) since Wed 2024-05-22 22:09:20 UTC; 28s ago
+             Docs: https://opensearch.org/
+         Main PID: 1573 (java)
+            Tasks: 68 (limit: 19108)
+           Memory: 1.3G (peak: 1.3G)
+              CPU: 59.209s
+           CGroup: /system.slice/opensearch.service
+                   └─1573 /usr/share/opensearch/jdk/bin/java -Xshare:auto -Dopensearch.networkaddress.cache.ttl=60 -Dopensearch.networkaddress.cache.negati>
+      
+      May 22 22:08:33 u2404 systemd-entrypoint[1573]: WARNING: System::setSecurityManager has been called by org.opensearch.bootstrap.OpenSearch (file:/usr>
+      May 22 22:08:33 u2404 systemd-entrypoint[1573]: WARNING: Please consider reporting this to the maintainers of org.opensearch.bootstrap.OpenSearch
+      May 22 22:08:33 u2404 systemd-entrypoint[1573]: WARNING: System::setSecurityManager will be removed in a future release
+      May 22 22:08:35 u2404 systemd-entrypoint[1573]: May 22, 2024 10:08:35 PM sun.util.locale.provider.LocaleProviderAdapter <clinit>
+      May 22 22:08:35 u2404 systemd-entrypoint[1573]: WARNING: COMPAT locale provider will be removed in a future release
+      May 22 22:08:37 u2404 systemd-entrypoint[1573]: WARNING: A terminally deprecated method in java.lang.System has been called
+      May 22 22:08:37 u2404 systemd-entrypoint[1573]: WARNING: System::setSecurityManager has been called by org.opensearch.bootstrap.Security (file:/usr/s>
+      May 22 22:08:37 u2404 systemd-entrypoint[1573]: WARNING: Please consider reporting this to the maintainers of org.opensearch.bootstrap.Security
+      May 22 22:08:37 u2404 systemd-entrypoint[1573]: WARNING: System::setSecurityManager will be removed in a future release
+      May 22 22:09:20 u2404 systemd[1]: Started opensearch.service - OpenSearch.
+
+5. Test Opensearch
+      # curl -X GET https://localhost:9200 -u 'admin:YourPassword' --insecure
+      {
+        "name" : "u2404",
+        "cluster_name" : "opensearch",
+        "cluster_uuid" : "FQrl6iZHSwuCrPla3fBqSg",
+        "version" : {
+          "distribution" : "opensearch",
+          "number" : "2.14.0",
+          "build_type" : "deb",
+          "build_hash" : "aaa555453f4713d652b52436874e11ba258d8f03",
+          "build_date" : "2024-05-09T18:50:48.052504416Z",
+          "build_snapshot" : false,
+          "lucene_version" : "9.10.0",
+          "minimum_wire_compatibility_version" : "7.10.0",
+          "minimum_index_compatibility_version" : "7.0.0"
+        },
+        "tagline" : "The OpenSearch Project: https://opensearch.org/"
+      }
+
+6. Query the plugins endpoint
+      # curl -X GET https://localhost:9200/_cat/plugins?v -u 'admin:OpenSearch-v2-14-1!' --insecure
+      name  component                            version
+      u2404 opensearch-alerting                  2.14.0.0
+      u2404 opensearch-anomaly-detection         2.14.0.0
+      u2404 opensearch-asynchronous-search       2.14.0.0
+      u2404 opensearch-cross-cluster-replication 2.14.0.0
+      u2404 opensearch-custom-codecs             2.14.0.0
+      u2404 opensearch-flow-framework            2.14.0.0
+      u2404 opensearch-geospatial                2.14.0.0
+      u2404 opensearch-index-management          2.14.0.0
+      u2404 opensearch-job-scheduler             2.14.0.0
+      u2404 opensearch-knn                       2.14.0.0
+      u2404 opensearch-ml                        2.14.0.0
+      u2404 opensearch-neural-search             2.14.0.0
+      u2404 opensearch-notifications             2.14.0.0
+      u2404 opensearch-notifications-core        2.14.0.0
+      u2404 opensearch-observability             2.14.0.0
+      u2404 opensearch-performance-analyzer      2.14.0.0
+      u2404 opensearch-reports-scheduler         2.14.0.0
+      u2404 opensearch-security                  2.14.0.0
+      u2404 opensearch-security-analytics        2.14.0.0
+      u2404 opensearch-skills                    2.14.0.0
+      u2404 opensearch-sql                       2.14.0.0
+
+
+
