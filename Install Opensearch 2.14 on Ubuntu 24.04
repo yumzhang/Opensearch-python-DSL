@@ -62,7 +62,7 @@ Install Opensearch 2.14 on Ubuntu 24.04
       May 22 22:08:37 u2404 systemd-entrypoint[1573]: WARNING: System::setSecurityManager will be removed in a future release
       May 22 22:09:20 u2404 systemd[1]: Started opensearch.service - OpenSearch.
 
-5. Test Opensearch
+5. Test Opensearch on port 9200
       # curl -X GET https://localhost:9200 -u 'admin:YourPassword' --insecure
       {
         "name" : "u2404",
