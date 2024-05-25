@@ -63,6 +63,9 @@ Install Opensearch 2.14 on Ubuntu 24.04
       May 22 22:09:20 u2404 systemd[1]: Started opensearch.service - OpenSearch.
 
 5. Test Opensearch on port 9200
+
+    admin password is OpenSearch-v2-14-1!
+
       # curl -X GET https://localhost:9200 -u 'admin:YourPassword' --insecure
       {
         "name" : "u2404",
@@ -106,6 +109,3 @@ Install Opensearch 2.14 on Ubuntu 24.04
       u2404 opensearch-security-analytics        2.14.0.0
       u2404 opensearch-skills                    2.14.0.0
       u2404 opensearch-sql                       2.14.0.0
-
-
-
