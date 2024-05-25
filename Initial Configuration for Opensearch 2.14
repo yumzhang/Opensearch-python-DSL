@@ -95,7 +95,7 @@ The following recommended settings will allow you to:
     ** This tool will be deprecated in the next major release of OpenSearch **
     ** https://github.com/opensearch-project/security/issues/1755           **
     **************************************************************************
-    [Password:]
+    [Password:] Opensearchwd
     $2y$12$HazMtJclzrSU4yK17.u7P.5lp9mjRmhDnKSBQZuSzA2Kn.2F1IbCa
 
     $ sudo vi /etc/opensearch/opensearch-security/internal_users.yml
