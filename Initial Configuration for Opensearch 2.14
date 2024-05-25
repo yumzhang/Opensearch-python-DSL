@@ -1,0 +1,11 @@
+Initial Configuration for Opensearch 2.14
+
+1. Set up OpenSearch in your environment
+
+2. Configure TLS
+
+3. Configure a user
+
+4. Apply changes
+
+5. Verify that the service is running
