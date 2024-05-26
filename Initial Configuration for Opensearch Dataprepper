@@ -1,0 +1,9 @@
+Initial Configuration for Opensearch Dataprepper
+
+1. Download and install Data Prepper
+
+    # cd /opt
+    # wget https://artifacts.opensearch.org/data-prepper/2.8.0/opensearch-data-prepper-jdk-2.8.0-linux-x64.tar.gz
+    # tar -xzvf opensearch-data-prepper-jdk-2.8.0-linux-x64.tar.gz
+
+2. Configure Data Prepper
