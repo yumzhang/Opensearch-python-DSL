@@ -11,4 +11,54 @@ The data can then be explored through OpenSearch search queries or the Discover 
 
     # curl https://raw.githubusercontent.com/fluent/fluent-bit/master/install.sh | sh
 
+          % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                         Dload  Upload   Total   Spent    Left  Speed
+        100  3917  100  3917    0     0  10691      0 --:--:-- --:--:-- --:--:-- 10702
+        ================================
+         Fluent Bit Installation Script 
+        ================================
+        This script requires superuser access to install packages.
+        You will be prompted for your password by sudo.
+          % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                         Dload  Upload   Total   Spent    Left  Speed
+        100  3175  100  3175    0     0   5492      0 --:--:-- --:--:-- --:--:--  5493
+        deb [signed-by=/usr/share/keyrings/fluentbit-keyring.gpg] https://packages.fluentbit.io/ubuntu/jammy jammy main
+        Hit:1 http://us.archive.ubuntu.com/ubuntu jammy InRelease
+        Hit:2 http://us.archive.ubuntu.com/ubuntu jammy-updates InRelease                                  
+        Hit:3 http://us.archive.ubuntu.com/ubuntu jammy-backports InRelease                                
+        Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease    
+        Get:5 https://packages.fluentbit.io/ubuntu/jammy jammy InRelease [7,565 B]
+        Get:6 https://packages.fluentbit.io/ubuntu/jammy jammy/main amd64 Packages [20.3 kB]
+        Fetched 27.9 kB in 2s (17.6 kB/s)     
+        Reading package lists... Done
+        Reading package lists... Done
+        Building dependency tree... Done
+        Reading state information... Done
+        The following additional packages will be installed:
+          libpq5
+        The following NEW packages will be installed:
+          fluent-bit libpq5
+        0 upgraded, 2 newly installed, 0 to remove and 4 not upgraded.
+        Need to get 41.7 MB of archives.
+        After this operation, 96.4 MB of additional disk space will be used.
+        Get:1 http://us.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpq5 amd64 14.11-0ubuntu0.22.04.1 [144 kB]
+        Get:2 https://packages.fluentbit.io/ubuntu/jammy jammy/main amd64 fluent-bit amd64 3.0.5 [41.6 MB]
+        Fetched 41.7 MB in 5s (8,892 kB/s)                            
+        Selecting previously unselected package libpq5:amd64.
+        (Reading database ... 189224 files and directories currently installed.)
+        Preparing to unpack .../libpq5_14.11-0ubuntu0.22.04.1_amd64.deb ...
+        Unpacking libpq5:amd64 (14.11-0ubuntu0.22.04.1) ...
+        Selecting previously unselected package fluent-bit.
+        Preparing to unpack .../fluent-bit_3.0.5_amd64.deb ...
+        Unpacking fluent-bit (3.0.5) ...
+        Setting up libpq5:amd64 (14.11-0ubuntu0.22.04.1) ...
+        Setting up fluent-bit (3.0.5) ...
+        Processing triggers for libc-bin (2.35-0ubuntu3.7) ...
+        NEEDRESTART-VER: 3.5
+        NEEDRESTART-KCUR: 5.15.0-107-generic
+        NEEDRESTART-KEXP: 5.15.0-107-generic
+        NEEDRESTART-KSTA: 1
+        
+        Installation completed. Happy Logging!
+
 2. 
