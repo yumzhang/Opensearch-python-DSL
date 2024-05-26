@@ -7,7 +7,7 @@ Application -> FluentBit -> Data Prepper -> Opensearch -> Opensearch Dashboards
 Log Ingestion relies on you adding log collection to your application’s environment to gather and send log data.
 The data can then be explored through OpenSearch search queries or the Discover page in OpenSearch Dashboards.
 
-1. Install FluentBit
+1. Install FluentBit on Ubuntu 22.04
 
     # curl https://raw.githubusercontent.com/fluent/fluent-bit/master/install.sh | sh
 
