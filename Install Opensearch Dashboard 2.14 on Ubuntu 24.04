@@ -36,3 +36,8 @@ Install Opensearch Dashboard 2.14 on Ubuntu 24.04
 4. Restart Opensearch Dashboards
 
     # systemctl restart opensearch-dashboards.service
+
+5. Goto http://192.168.0.55:5601
+
+    username: admin
+    passowrd: your-admin-password
