@@ -66,7 +66,7 @@ Install Opensearch 2.14 on Ubuntu 24.04
 
     admin password is OpenSearch-v2-14-1!
 
-      # curl -X GET https://localhost:9200 -u 'admin:YourPassword' --insecure
+      # curl -X GET https://localhost:9200 -u 'admin:OpenSearch-v2-14-1!' --insecure
       {
         "name" : "u2404",
         "cluster_name" : "opensearch",
