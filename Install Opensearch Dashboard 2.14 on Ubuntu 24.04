@@ -1,0 +1,27 @@
+Install Opensearch Dashboard 2.14 on Ubuntu 24.04
+
+1. Install Opensearch Dashboard 2.14
+    # sudo dpkg -i opensearch-dashboards-2.14.0-linux-x64.deb
+
+    Selecting previously unselected package opensearch-dashboards.
+    (Reading database ... 84768 files and directories currently installed.)
+    Preparing to unpack opensearch-dashboards-2.14.0-linux-x64.deb ...
+    Running OpenSearch-Dashboards Pre-Installation Script
+    Unpacking opensearch-dashboards (2.14.0) ...
+    Setting up opensearch-dashboards (2.14.0) ...
+    Running OpenSearch-Dashboards Post-Installation Script
+    ### NOT starting on installation, please execute the following statements to configure opensearch-dashboards service to start automatically using systemd
+     sudo systemctl daemon-reload
+     sudo systemctl enable opensearch-dashboards.service
+    ### You can start opensearch-dashboards service by executing
+     sudo systemctl start opensearch-dashboards.service
+    ### Breaking change in packaging since 2.13.0
+     In 2.13.0 and later releases of OpenSearch Dashboards, we have changed the permissions associated with access to installed files
+     If you are configuring tools that require read access to the OpenSearch Dashboards configuration files, we recommend you add the user that runs these tools to the 'opensearch-dashboards' group
+     For more information, see https://github.com/opensearch-project/opensearch-build/pull/4043
+2. Configure Opensearch Dashboard for systemd
+
+    # systemctl daemon-reload
+    # systemctl enable opensearch-dashboards.service
+    # systemctl start opensearch-dashboards.service
+    # systemctl status opensearch-dashboards.service
