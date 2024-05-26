@@ -1,0 +1,9 @@
+Configure Opensearch Log Ingestion
+
+Data Flow:
+
+Application -> FluentBit -> Data Prepper -> Opensearch -> Opensearch Dashboards
+
+Log Ingestion relies on you adding log collection to your application’s environment to gather and send log data.
+The data can then be explored through OpenSearch search queries or the Discover page in OpenSearch Dashboards.
+
