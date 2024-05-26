@@ -1,6 +1,6 @@
-Install Opensearch 2.14 on Ubuntu 24.04
+Install Opensearch 2.14 on Ubuntu 22.04
 
-1. Install and upgrade the Ubuntu 24.04 OS.
+1. Install and upgrade the Ubuntu 22.04 OS.
     # apt-get update
     # apt-get upgrade
 2. Download Opensearch 2.14
