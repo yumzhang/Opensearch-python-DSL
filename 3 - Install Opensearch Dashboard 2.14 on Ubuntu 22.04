@@ -1,4 +1,4 @@
-Install Opensearch Dashboard 2.14 on Ubuntu 24.04
+Install Opensearch Dashboard 2.14 on Ubuntu 22.04
 
 1. Install Opensearch Dashboard 2.14
     # sudo dpkg -i opensearch-dashboards-2.14.0-linux-x64.deb
