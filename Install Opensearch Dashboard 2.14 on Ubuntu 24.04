@@ -25,3 +25,14 @@ Install Opensearch Dashboard 2.14 on Ubuntu 24.04
     # systemctl enable opensearch-dashboards.service
     # systemctl start opensearch-dashboards.service
     # systemctl status opensearch-dashboards.service
+
+3. Initial configuration for Opensearch Dashboards
+
+    # sudo vi /etc/opensearch-dashboards/opensearch_dashboards.yml
+
+    # Use 0.0.0.0 to bind to any available interface.
+    server.host: 0.0.0.0
+
+4. Restart Opensearch Dashboards
+
+    # systemctl restart opensearch-dashboards.service
