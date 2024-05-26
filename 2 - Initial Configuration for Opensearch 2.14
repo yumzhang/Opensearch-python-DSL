@@ -5,7 +5,7 @@ The following recommended settings will allow you to:
     Bind OpenSearch to an IP or network interface on the host.
     Set initial and maximum JVM heap sizes.
     Define an environment variable that points to the bundled JDK.
-    Configure your own TLS certificates—no third-party certificate authority (CA) is required.
+    Configure your own TLS certificates—no third-party certificate authority (CA) is required. See detail in Opensearch documentation.
     Create an admin user with a custom password.
 
 1. Set up OpenSearch in your environment
