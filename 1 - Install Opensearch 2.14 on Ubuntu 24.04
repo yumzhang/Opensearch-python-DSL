@@ -86,7 +86,9 @@ Install Opensearch 2.14 on Ubuntu 24.04
       }
 
 6. Query the plugins endpoint
+
       # curl -X GET https://localhost:9200/_cat/plugins?v -u 'admin:OpenSearch-v2-14-1!' --insecure
+
       name  component                            version
       u2404 opensearch-alerting                  2.14.0.0
       u2404 opensearch-anomaly-detection         2.14.0.0
