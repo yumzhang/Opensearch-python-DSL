@@ -10,7 +10,7 @@ Install Opensearch 2.14 on Ubuntu 24.04
     # wget https://artifacts.opensearch.org/logstash/logstash-oss-with-opensearch-output-plugin-8.9.0-linux-x64.tar.gz
     # wget https://artifacts.opensearch.org/opensearch-clients/opensearch-cli/opensearch-cli-1.2.0-linux-x64.zip
 3. Install Opensearch 2.14
-    # sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD=YourPassword dpkg -i opensearch-2.14.0-linux-x64.deb
+    # sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD=OpenSearch-v2-14-1! dpkg -i opensearch-2.14.0-linux-x64.deb
 
     (Reading database ... 84768 files and directories currently installed.)
     Preparing to unpack opensearch-2.14.0-linux-x64.deb ...
