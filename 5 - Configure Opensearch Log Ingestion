@@ -1,4 +1,4 @@
-Configure Opensearch Log Ingestion
+Install and configure Opensearch Log Ingestion
 
 Data Flow:
 
@@ -61,4 +61,7 @@ The data can then be explored through OpenSearch search queries or the Discover 
         
         Installation completed. Happy Logging!
 
-2. 
+2. Start Fluentbit
+    # systemctl enable fluent-bit
+    # systemctl start fluent-bit
+    # systemctl status fluent-bit
