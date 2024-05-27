@@ -33,3 +33,50 @@ Initial Configuration for Opensearch Data Prepper
 
     # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64
     # bin/data-prepper pipelines.yaml data-prepper-config.yaml
+
+        Reading pipelines and data-prepper configuration files from Data Prepper home directory.
+        JAVA_HOME is set to /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/openjdk/jdk-17.0.10+7
+        2024-05-27T13:42:57,125 [main] INFO  org.opensearch.dataprepper.DataPrepperArgumentConfiguration - Command line args: /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/pipelines,/opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/config/data-prepper-config.yaml
+        2024-05-27T13:42:58,100 [main] WARN  org.opensearch.dataprepper.pipeline.parser.rule.RuleEvaluator - Json Path not found for documentdb
+        2024-05-27T13:42:58,106 [main] INFO  org.opensearch.dataprepper.pipeline.parser.transformer.DynamicConfigTransformer - No transformation needed
+        2024-05-27T13:43:01,318 [main] INFO  org.opensearch.dataprepper.plugins.kafka.extension.KafkaClusterConfigExtension - Applying Kafka Cluster Config Extension.
+        2024-05-27T13:43:02,829 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building pipeline [simple-sample-pipeline] from provided configuration
+        2024-05-27T13:43:02,834 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building [random] as source component for the pipeline [simple-sample-pipeline]
+        2024-05-27T13:43:03,034 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building buffer for the pipeline [simple-sample-pipeline]
+        2024-05-27T13:43:03,046 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building processors for the pipeline [simple-sample-pipeline]
+        2024-05-27T13:43:03,048 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building sinks for the pipeline [simple-sample-pipeline]
+        2024-05-27T13:43:03,055 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building [stdout] as sink component
+        2024-05-27T13:43:03,058 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Constructing MultiBufferDecorator with [0] secondary buffers for pipeline [simple-sample-pipeline]
+        2024-05-27T13:43:03,277 [main] WARN  org.opensearch.dataprepper.pipeline.server.config.DataPrepperServerConfiguration - Creating data prepper server without authentication. This is not secure.
+        2024-05-27T13:43:03,279 [main] WARN  org.opensearch.dataprepper.pipeline.server.config.DataPrepperServerConfiguration - In order to set up Http Basic authentication for the data prepper server, go here: https://github.com/opensearch-project/data-prepper/blob/main/docs/core_apis.md#authentication
+        2024-05-27T13:43:03,624 [main] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [simple-sample-pipeline] - Initiating pipeline execution
+        2024-05-27T13:43:03,657 [simple-sample-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [simple-sample-pipeline] Sink is ready, starting source...
+        2024-05-27T13:43:03,665 [simple-sample-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [simple-sample-pipeline] - Submitting request to initiate the pipeline processing
+        2024-05-27T13:43:03,710 [main] WARN  org.opensearch.dataprepper.pipeline.server.HttpServerProvider - Creating Data Prepper server without TLS. This is not secure.
+        2024-05-27T13:43:03,712 [main] WARN  org.opensearch.dataprepper.pipeline.server.HttpServerProvider - In order to set up TLS for the Data Prepper server, go here: https://github.com/opensearch-project/data-prepper/blob/main/docs/configuration.md#server-configuration
+        2024-05-27T13:43:04,112 [main] INFO  org.opensearch.dataprepper.pipeline.server.DataPrepperServer - Data Prepper server running at :4900
+        {"message":"cee6de52-15d2-4229-b9f6-afa2c2a0569f"}
+        {"message":"1448809e-f1ae-4721-9dd2-10896c6aa8a3"}
+        {"message":"0b381724-3850-4f7b-8fa9-f442d3105cc3"}
+        {"message":"204bf8fd-3035-4c75-930e-ee04f1c46e6e"}
+        {"message":"57becbcd-e1bb-4384-ab3b-c2490d5c8c4a"}
+        {"message":"c522e2fe-06bb-4fbd-80a0-67d78bf80720"}
+        {"message":"a5846a5f-41a5-4374-8f75-c743d81390e5"}
+        {"message":"35197793-7368-478c-a5c7-2d31190f4bc3"}
+        {"message":"4bc2e5f0-47dc-480b-a699-faf6e1b8d187"}
+        {"message":"97a2fc07-d41b-4700-821f-cc3327ccbe7c"}
+        {"message":"023b32a5-9259-4b51-82f3-6803ad7e213b"}
+        {"message":"522f1ca0-1e5b-46b3-8a9e-0774cd3b25f4"}
+        {"message":"f4ea3c14-cbdd-49ba-9967-74d2547224c6"}
+        {"message":"56060c1b-d1b2-447c-8ed9-847d94c0695f"}
+        {"message":"cac2ec43-9022-4785-ab21-71b36fb3f52b"}
+        {"message":"8eb5c60e-6955-49f6-ad65-6abbcb15fb61"}
+        {"message":"175cc94b-749c-4277-aa8d-f0c687503a82"}
+        {"message":"80363c87-f7bb-4330-832f-c8553f45a143"}
+        {"message":"0f59fde1-abe4-4629-875d-6641558a586b"}
+        {"message":"77483d8d-54ea-4d20-b78e-61fd064ce1f6"}
+        {"message":"e7956156-4886-41a2-8bd0-9b343da357a6"}
+        {"message":"d8f03750-f33d-4d7c-ba59-f8f68b5c766a"}
+        {"message":"73dc1ee3-27ed-4343-b777-0fafa4c8f7d6"}
+
+5. Configure Data Prepper running http and send log records to Opensearch
