@@ -3,6 +3,7 @@ Install Opensearch 2.14 on Ubuntu 22.04
 1. Install and upgrade the Ubuntu 22.04 OS.
     # apt-get update
     # apt-get upgrade
+    # touch /etc/cloud/cloud-init.disabled
 2. Download Opensearch 2.14
     # wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.14.0/opensearch-2.14.0-linux-x64.deb
     # wget https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/2.14.0/opensearch-dashboards-2.14.0-linux-x64.deb
