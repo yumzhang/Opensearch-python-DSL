@@ -116,6 +116,7 @@ Initial Configuration for Opensearch Data Prepper
                     document_id_field: "syslog_message"
 
                 Note: use any host other than localhost may have SSL certificate issue.
+                https://github.com/opensearch-project/data-prepper/blob/main/docs/configuration.md#server-configuration
 
         # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64
         # bin/data-prepper
