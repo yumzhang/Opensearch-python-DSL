@@ -79,4 +79,75 @@ Initial Configuration for Opensearch Data Prepper
         {"message":"d8f03750-f33d-4d7c-ba59-f8f68b5c766a"}
         {"message":"73dc1ee3-27ed-4343-b777-0fafa4c8f7d6"}
 
-5. Configure Data Prepper running http and send log records to Opensearch
+5. Configure Data Prepper running http intake on port 2021 and send log records to Opensearch
+
+        # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/pipelines
+        # vim http-pipeline.yaml
+
+            http-pipeline:
+              workers: 2
+              delay: "5000"
+              source:
+                http:
+                  port: 2021
+                  ssl: false
+              buffer:
+                bounded_blocking: # stores data in memory
+                  buffer_size: 1024 # max number of records the buffer accepts
+                  batch_size: 256 # max number of records the buffer drains after each read
+              sink:
+                # This sink section send output to stdout 
+                - stdout: {}
+            
+                # This sink section send output to a file
+                #    - file:
+                #        path: "grok_output.json"
+            
+                # This sink section can send output to Opensearch
+                - opensearch:
+                    hosts: ["https://localhost:9200"]  # OpenSearch cluster endpoint
+                    username: admin
+                    password: OpenSearch-v2-14-1!
+                    index: syslog_data
+                    document_type: "_doc"
+                    document_id_field: "syslog_message"
+
+        # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64
+        # bin/data-prepper
+
+        Reading pipelines and data-prepper configuration files from Data Prepper home directory.
+        JAVA_HOME is set to /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/openjdk/jdk-17.0.10+7
+        2024-05-27T15:12:48,114 [main] INFO  org.opensearch.dataprepper.DataPrepperArgumentConfiguration - Command line args: /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/pipelines,/opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/config/data-prepper-config.yaml
+        2024-05-27T15:12:48,900 [main] WARN  org.opensearch.dataprepper.pipeline.parser.rule.RuleEvaluator - Json Path not found for documentdb
+        2024-05-27T15:12:48,903 [main] INFO  org.opensearch.dataprepper.pipeline.parser.transformer.DynamicConfigTransformer - No transformation needed
+        2024-05-27T15:12:51,039 [main] INFO  org.opensearch.dataprepper.plugins.kafka.extension.KafkaClusterConfigExtension - Applying Kafka Cluster Config Extension.
+        2024-05-27T15:12:52,158 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building pipeline [http-pipeline] from provided configuration
+        2024-05-27T15:12:52,159 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building [http] as source component for the pipeline [http-pipeline]
+        2024-05-27T15:12:52,443 [main] WARN  org.opensearch.dataprepper.plugins.source.loghttp.HTTPSource - Creating http source without authentication. This is not secure.
+        2024-05-27T15:12:52,446 [main] WARN  org.opensearch.dataprepper.plugins.source.loghttp.HTTPSource - In order to set up Http Basic authentication for the http source, go here: https://github.com/opensearch-project/data-prepper/tree/main/data-prepper-plugins/http-source#authentication-configurations
+        2024-05-27T15:12:52,456 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building buffer for the pipeline [http-pipeline]
+        2024-05-27T15:12:52,473 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building processors for the pipeline [http-pipeline]
+        2024-05-27T15:12:52,476 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building sinks for the pipeline [http-pipeline]
+        2024-05-27T15:12:52,478 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building [stdout] as sink component
+        2024-05-27T15:12:52,482 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Building [opensearch] as sink component
+        2024-05-27T15:12:52,535 [main] WARN  org.opensearch.dataprepper.plugins.sink.opensearch.index.IndexConfiguration - document_id_field is deprecated in favor of document_id, and support for document_id_field will be removed in a future major version release.
+        2024-05-27T15:12:52,573 [main] INFO  org.opensearch.dataprepper.parser.PipelineTransformer - Constructing MultiBufferDecorator with [0] secondary buffers for pipeline [http-pipeline]
+        2024-05-27T15:12:52,784 [main] WARN  org.opensearch.dataprepper.pipeline.server.config.DataPrepperServerConfiguration - Creating data prepper server without authentication. This is not secure.
+        2024-05-27T15:12:52,785 [main] WARN  org.opensearch.dataprepper.pipeline.server.config.DataPrepperServerConfiguration - In order to set up Http Basic authentication for the data prepper server, go here: https://github.com/opensearch-project/data-prepper/blob/main/docs/core_apis.md#authentication
+        2024-05-27T15:12:53,065 [main] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [http-pipeline] - Initiating pipeline execution
+        2024-05-27T15:12:53,088 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [http-pipeline] - sink is not ready for execution, retrying
+        2024-05-27T15:12:53,090 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.sink.opensearch.OpenSearchSink - Initializing OpenSearch sink
+        2024-05-27T15:12:53,111 [main] WARN  org.opensearch.dataprepper.pipeline.server.HttpServerProvider - Creating Data Prepper server without TLS. This is not secure.
+        2024-05-27T15:12:53,118 [main] WARN  org.opensearch.dataprepper.pipeline.server.HttpServerProvider - In order to set up TLS for the Data Prepper server, go here: https://github.com/opensearch-project/data-prepper/blob/main/docs/configuration.md#server-configuration
+        2024-05-27T15:12:53,137 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.sink.opensearch.ConnectionConfiguration - Using the username provided in the config.
+        2024-05-27T15:12:53,194 [main] INFO  org.opensearch.dataprepper.pipeline.server.DataPrepperServer - Data Prepper server running at :4900
+        2024-05-27T15:12:53,651 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.sink.opensearch.ConnectionConfiguration - Using the trust all strategy
+        2024-05-27T15:12:54,176 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.sink.opensearch.ConnectionConfiguration - Using the username provided in the config.
+        2024-05-27T15:12:54,177 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.sink.opensearch.ConnectionConfiguration - Using the trust all strategy
+        2024-05-27T15:12:56,356 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.sink.opensearch.OpenSearchSink - Initialized OpenSearch sink
+        2024-05-27T15:12:56,357 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [http-pipeline] Sink is ready, starting source...
+        2024-05-27T15:12:59,561 [http-pipeline-sink-worker-2-thread-1] WARN  org.opensearch.dataprepper.plugins.source.loghttp.HTTPSource - Creating http source without SSL/TLS. This is not secure.
+        2024-05-27T15:12:59,568 [http-pipeline-sink-worker-2-thread-1] WARN  org.opensearch.dataprepper.plugins.source.loghttp.HTTPSource - In order to set up TLS for the http source, go here: https://github.com/opensearch-project/data-prepper/tree/main/data-prepper-plugins/http-source#ssl
+        2024-05-27T15:13:01,288 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.source.loghttp.HTTPSource - Started http source on port 2021...
+        2024-05-27T15:13:01,291 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [http-pipeline] - Submitting request to initiate the pipeline processing
+
