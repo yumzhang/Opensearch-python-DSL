@@ -192,3 +192,10 @@ The data can then be explored through OpenSearch search queries or the Discover 
           # systemctl status fluent-bit
 
     Check /var/log/syslog for the log messages for Fluentbit.
+
+Now, you can log into Opensearch Dashboards and create index for syslog.
+
+Opensearch-Dashboards -> Management -> Dashboards Management -> Index Patterns -> Create Index Pattern.
+Under Index parrern name, type syslog_data*, click Next step, click Create index pattern.
+
+Goto Discover and search for the records.
