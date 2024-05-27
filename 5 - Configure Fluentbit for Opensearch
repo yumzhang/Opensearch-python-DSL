@@ -190,3 +190,5 @@ The data can then be explored through OpenSearch search queries or the Discover 
           # systemctl daemon-reload
           # systemctl start fluent-bit
           # systemctl status fluent-bit
+
+    Check /var/log/syslog for the log messages for Fluentbit.
