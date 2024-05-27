@@ -81,6 +81,9 @@ Initial Configuration for Opensearch Data Prepper
 
 5. Configure Data Prepper running http intake on port 2021 and send log records to Opensearch
 
+    You can run multiple pipeline configutation files under /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/pipelines. For example,
+    run both http-pipeline.yaml and test-pipelines.yaml at the same time.
+
         # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/pipelines
         # vim http-pipeline.yaml
 
