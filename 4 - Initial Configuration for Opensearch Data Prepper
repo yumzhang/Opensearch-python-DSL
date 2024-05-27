@@ -157,3 +157,4 @@ Initial Configuration for Opensearch Data Prepper
         2024-05-27T15:13:01,288 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.plugins.source.loghttp.HTTPSource - Started http source on port 2021...
         2024-05-27T15:13:01,291 [http-pipeline-sink-worker-2-thread-1] INFO  org.opensearch.dataprepper.pipeline.Pipeline - Pipeline [http-pipeline] - Submitting request to initiate the pipeline processing
 
+    After install and configure Fluentbit is done, need to run data-prepper process in the background.
