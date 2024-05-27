@@ -6,4 +6,30 @@ Initial Configuration for Opensearch Data Prepper
     # wget https://artifacts.opensearch.org/data-prepper/2.8.0/opensearch-data-prepper-jdk-2.8.0-linux-x64.tar.gz
     # tar -xzvf opensearch-data-prepper-jdk-2.8.0-linux-x64.tar.gz
 
-2. Configure Data Prepper
+2. Configure data-prepper-config.yaml for Data Prepper
+
+    # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/config
+    # vim data-prepper-config.yaml
+        ssl: false
+        
+        extensions:
+          geoip_service:
+            maxmind:
+
+3. Configure pipelines.yaml for Data Prepper
+
+    # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64/pipelines
+    # vim test-pipelines.yaml
+
+        simple-sample-pipeline:
+          workers: 2
+          delay: "5000"
+          source:
+            random:
+          sink:
+            - stdout:
+
+4. Running Data Prepper
+
+    # cd /opt/opensearch-data-prepper-jdk-2.8.0-linux-x64
+    # bin/data-prepper pipelines.yaml data-prepper-config.yaml
