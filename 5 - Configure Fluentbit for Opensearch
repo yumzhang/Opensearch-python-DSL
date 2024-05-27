@@ -1,5 +1,7 @@
 Install and configure Fluentbit for Opensearch
 
+https://fluentbit.io/
+
 Data Flow:
 
 Application -> FluentBit -> Data Prepper -> Opensearch -> Opensearch Dashboards
@@ -60,6 +62,17 @@ The data can then be explored through OpenSearch search queries or the Discover 
         NEEDRESTART-KSTA: 1
         
         Installation completed. Happy Logging!
+    Or,
+
+          # apt-get update
+          # apt-get install fluent-bit
+          # systemctl enable fluentbit
+          # systemctl daemon-reload
+          # systemctl enable fluent-bit
+          # systemctl start fluent-bit
+          # systemctl status fluent-bit
+
+2. Configure Fluentbit
 
 2. Start Fluentbit
     # systemctl enable fluent-bit
